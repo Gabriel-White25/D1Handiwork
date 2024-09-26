@@ -117,6 +117,59 @@
             display: block;
             margin: 0 auto;
         }
+
+        .carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel img {
+    max-width: 100%;
+    height: auto;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-item {
+    display: none;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
         
         .service {
             text-align: left;
@@ -173,34 +226,104 @@
     </header>
 
     <section id="intro" class="intro container">
-        <h1>Get the Right Guy for D1-Quality General Labor. Currently Servicing Tampa.</h1>
+        <h1>Get the Right Guy for D1-Quality General Labor. Currently Servicing Atlanta.</h1>
         <img src="squarespace3.png" alt="squarespace3">
-        <p>Hi there! Thanks for checking out my website. My name is Gabriel, and I'm a D1 rugby athlete based in Atlanta. I’m currently in Tampa until August, so I hope you will consider my services for whatever it is you may need!</p>
+        <p>Hi there! Thanks for checking out my website. My name is Gabriel, and I'm a D1 rugby athlete based in Marietta. I hope you will consider my services for whatever it is you may need!</p>
     </section>
 
     <section id="services" class="services container">
         <h2>Feel Free to Browse These D1 Services!</h2>
+        
         <div class="service">
-            <h3>4x6 Storage Shelves | $400</h3>
-            <img src="storageshelves1.png" alt="Storage Shelves">
-            <p>These 8-foot by 8-foot shelves accommodate 24 standard yellow-top bins. Perfect for your garage or storage room!</p>
+            <h3>Storage Shelves | $400 for a 6x4 unit shelf</h3>
+            <div class="carousel" id="carousel1">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="4x6Shelf2.0.png" alt="Storage Shelves">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="CustomShelf2.0.png" alt="Custom Shelves">
+                    </div>
+                </div>
+                <button class="carousel-control prev" onclick="prevSlide('carousel1')">❮</button>
+                <button class="carousel-control next" onclick="nextSlide('carousel1')">❯</button>
+            </div>
+            <p>These shelves accommodate standard yellow-top bins. Perfect for your garage or storage room!</p>
         </div>
+    
         <div class="service">
-            <h3>Junk Removal | Contact for Estimate! </h3>
-            <img src="junkremoval2.png" alt="Junk Removal">
+            <h3>Junk Removal | $75 - $125 Per Pickup Truck Load</h3>
+            <div class="carousel" id="carousel2">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Removal2.0.png" alt="Junk Removal">
+                    </div>
+                </div>
+            </div>
             <p>Need to get rid of unwanted items? I offer efficient and affordable junk removal services.</p>
         </div>
+    
         <div class="service">
-            <h3>Miscellaneous Labor (Demolition/Removal/Beyond) | Contact for Estimate!</h3>
-            <img src="miscwork1.png" alt="Misc Work">
-            <p>I am looking for general handiwork jobs to build my skills as a handyman. If you need help with a job, I'm your guy! Whatever you think a man and a truck can accomplish, I am willing and able.</p>
+            <h3>Miscellaneous Services | Contact for Estimate!</h3>
+            <div class="carousel" id="carousel3">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Demolition2.0.png" alt="Demolition">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="DeckConstruct2.0.png" alt="Deck Construction">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="GarageTidy2.0.png" alt="Garage Tidy">
+                    </div>
+                </div>
+                <button class="carousel-control prev" onclick="prevSlide('carousel3')">❮</button>
+                <button class="carousel-control next" onclick="nextSlide('carousel3')">❯</button>
+            </div>
+            <p>I am looking for general labor jobs to build my skills as a handyman. If you need help with a job, please reach out!</p>
         </div>
     </section>
+    
+    <script>
+        // JavaScript to control the carousel
+        function nextSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const items = carousel.querySelectorAll('.carousel-item');
+            let activeIndex = 0;
+    
+            items.forEach((item, index) => {
+                if (item.classList.contains('active')) {
+                    activeIndex = index;
+                    item.classList.remove('active');
+                }
+            });
+    
+            const nextIndex = (activeIndex + 1) % items.length;
+            items[nextIndex].classList.add('active');
+        }
+    
+        function prevSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const items = carousel.querySelectorAll('.carousel-item');
+            let activeIndex = 0;
+    
+            items.forEach((item, index) => {
+                if (item.classList.contains('active')) {
+                    activeIndex = index;
+                    item.classList.remove('active');
+                }
+            });
+    
+            const prevIndex = (activeIndex - 1 + items.length) % items.length;
+            items[prevIndex].classList.add('active');
+        }
+    </script>
+    
 
     <section id="about" class="about container">
         <h2>About D1Handiwork</h2>
         <img src="aboutme1.png" alt="aboutme1">
-        <p>Primarily, I am a D1A student-athlete who plays rugby for Life University in Atlanta. In my free time, I’m on a mission to offer general labor services to my neighborhood and beyond. From small-scale projects to junk removal, I’ve got you covered. Feel free to contact me if you need help with anything! I am looking to build my skills and work for you so I can pay for my tuition and vehicle.</p>
+        <p>Primarily, I am a D1A student-athlete who plays rugby for Life University in Marietta. In my free time, I’m on a mission to offer general labor services to my neighborhood and surrounding areas. From small-scale projects to junk removal and beyond, I’ve got you covered. Feel free to contact me if you need help with anything! I am looking to build my skills and work for you so I can pay for my tuition and vehicle.</p>
     </section>
 
     <section id="contact" class="contact container">
@@ -212,7 +335,7 @@
 
     <footer class="footer">
         <p>&copy; 2024 Gabriel White Marín | Contact: gabedwardw@gmail.com </p>
-        <p>Based in Tampa Palms, FL 33647</p>
+        <p>Based in Marietta, GA 30060</p>
     </footer>
 </body>
 </html>
